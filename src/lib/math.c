@@ -1,5 +1,5 @@
 /*
- *	Copyright (c) 2009 Marco Merli <yohji@marcomerli.net>
+ *	Copyright (c) 2008 Marco Merli <yohji@marcomerli.net>
  *
  *	This program is free software; you can redistribute it and/or modify
  *	it under the terms of the GNU General Public License as published by
@@ -138,4 +138,22 @@ int moltiplication( int a, int b )
 
 	printb( c );
 	return c;
+}
+
+long long fatt( long n )
+{
+	if ( n == 0 )
+		return 1;
+
+	return n * fatt( n - 1 );
+}
+
+long long nPk( long n, long k )
+{
+	return fatt( n ) / fatt( n - k ); 
+}
+
+long long nCk( long n, long k )
+{
+	return nPk( n, k ) * 1 / fatt( k ); 
 }

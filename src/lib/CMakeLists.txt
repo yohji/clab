@@ -6,7 +6,7 @@ ADD_LIBRARY(clablib SHARED
 	sort.c
 	random.c
 	math.c
-	clock.c
+	time.c
 	stack.c
 	temp.c
 	text.c)

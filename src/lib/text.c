@@ -1,5 +1,5 @@
 /*
- *	Copyright (c) 2009 Marco Merli <yohji@marcomerli.net>
+ *	Copyright (c) 2008 Marco Merli <yohji@marcomerli.net>
  *
  *	This program is free software; you can redistribute it and/or modify
  *	it under the terms of the GNU General Public License as published by
@@ -97,4 +97,48 @@ char** strspt( char* s, int c )
 	list[list_i] = buffer;
 	
 	return list;
+}
+
+bool isUpCharacter( int c )
+{
+	if ( c >= 65 && c <= 90 )
+		return true;
+
+	return false;
+}
+
+bool isLowCharacter( int c )
+{
+	if ( c >= 97 && c <= 122 )
+		return true;
+
+	return false;
+}
+
+bool isCharacter( int c )
+{
+	if ( isUpCharacter(c) || isLowCharacter(c) )
+		return true;
+
+	return false;
+}
+
+void toLower( char* string )
+{
+	int i = 0;
+	for ( ; *(string + i) ; i++ ) {
+		char c = *(string + i);
+		if ( isUpCharacter(c)  )
+			*(string + i) = 97 + (c - 65);
+	}
+}
+
+void toUpper( char* string )
+{
+	int i = 0;
+	for ( ; *(string + i) ; i++ ) {
+		char c = *(string + i);
+		if ( isLowCharacter(c)  )
+			*(string + i) = 65 + (c - 97);
+	}
 }

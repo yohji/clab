@@ -19,30 +19,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <sys/timeb.h>
-#include "clock.h"
 
 
-long current_time()
+void format_time( time_t* time )
 {
-	time_t tp;
-	time( &tp );
-	
-	return tp;	
+    char* tb = malloc( sizeof(char) );
+    char* ct = ctime( time );
+    
+    int i, tb_i = 0;
+    for ( i = 11; i < 19; i++ )
+        tb[tb_i++] = ct[i];
+    tb[tb_i] = '\0';
+
+    printf( "%s", tb );
+    free( tb );
 }
 
-double current_time_millis()
+int main()
 {
-	char* buffer = malloc( sizeof(char) );
-	struct timeb t;
-	double time;
-    
-    ftime( &t );
-    sprintf( buffer, "%ld.", (long) t.time );
-    sprintf( buffer, "%s%d", buffer, t.millitm );
+    time_t t;
+    char* ct;
+   
+    time( &t );
+    format_time( &t );
 
-    time = atof( buffer );
-    free( buffer );
-    
-    return time;
+    for ( ; ; time(&t) ) {
+        printf( "\b\b\b\b\b\b\b\b" );
+        format_time( &t );
+    }
+
+    return 0;
 }
+

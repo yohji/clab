@@ -16,24 +16,35 @@
  * 	Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include <stdbool.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <fcntl.h>
 
-#ifndef MATH_H_
-#define MATH_H_
+int main(int argc, char **argv)
+{
+	int fd;
+	size_t size;
+	char buffer [BUFSIZ];
 
-#define abs(n) ( (n < 0) ? n - (2 * n) : n )
-#define max(m, n) ( (m > n) ? m : n )
-#define min(m, n) ( (m < n) ? m : n )
+	if ( (fd = open( "/dev/fd0", O_RDWR )) == 0 ) {
+		perror( "Open error: " );
+		exit(-1);
+	}
+	
+	if ( (size = write( fd, "Marco", 5 )) == -1 ) {
+		perror( "Write error: " );
+		exit(-1);
+	}
 
-void show_limits();
-double power( int b, int e );
-int htoi_hex( char* s );
-int htoi_oct( char* s );
-int htoi_bin( char* s );
-int moltiplication( int a, int b );
-void printb( uint n );
-long long fatt( long n );
-long long nPk( long n, long k );
-long long nCk( long n, long k );
+	lseek( fd, 0, SEEK_SET );
+	if ( (size = read( fd, buffer, BUFSIZ )) == -1 ) {
+		perror( "Read error: " );
+		exit(-1);
+	}
 
-#endif
+	printf( "%s\nSize: %d\n", buffer, size );
+	close( fd );
+
+	return 0;
+}

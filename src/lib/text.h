@@ -1,5 +1,5 @@
 /*
- *	Copyright (c) 2009 Marco Merli <yohji@marcomerli.net>
+ *	Copyright (c) 2008 Marco Merli <yohji@marcomerli.net>
  *
  *	This program is free software; you can redistribute it and/or modify
  *	it under the terms of the GNU General Public License as published by
@@ -16,6 +16,8 @@
  * 	Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+#include <stdbool.h>
+
 #ifndef TEXT_H_
 #define TEXT_H_
 
@@ -31,10 +33,16 @@ enum escapes {
 	RETURN = '\r'
 };
 
-extern void text_info( char* text );
-extern void format_space( char* text );
-extern void text_reverse( char* text );
-extern int strindex( char* s, char c );
-extern char** strspt( char* s, int c );
+void text_info( char* text );
+void format_space( char* text );
+void text_reverse( char* text );
+int strindex( char* s, char c );
+char** strspt( char* s, int c );
+bool isUpCharacter( int c );
+bool isLowCharacter( int c );
+bool isCharacter( int c );
+void toLower( char* string );
+void toUpper( char* string );
+
 
 #endif /*TEXT_H_*/

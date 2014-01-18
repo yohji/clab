@@ -25,7 +25,7 @@
 #include "../lib/sort.h"
 #include "../lib/random.h"
 #include "../lib/math.h"
-#include "../lib/clock.h"
+#include "../lib/time.h"
 #include "../lib/temp.h"
 #include "../lib/text.h"
 #include "../lib/stack.h"
