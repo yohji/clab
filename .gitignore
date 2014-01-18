@@ -1,0 +1,21 @@
+# Trash directories
+*DS_Store
+
+# Backup files
+*~
+*.swp
+
+# CMake files
+CMakeCache.txt
+CMakeFiles
+cmake_install.cmake
+Makefile
+
+# IDE files
+nbproject/
+clab.kdev4
+.kdev4
+
+# Binaries
+bin/
+dist/

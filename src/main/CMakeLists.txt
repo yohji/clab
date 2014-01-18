@@ -1,0 +1,17 @@
+ADD_DEFINITIONS(-Wall -O2)
+
+ADD_EXECUTABLE(fork fork.c)
+ADD_EXECUTABLE(exec exec.c)
+ADD_EXECUTABLE(read read.c)
+ADD_EXECUTABLE(nmap nmap.c)
+ADD_EXECUTABLE(server server.c)
+ADD_EXECUTABLE(socket socket.c)
+ADD_EXECUTABLE(thread thread.c)
+ADD_EXECUTABLE(write write.c)
+ADD_EXECUTABLE(encode encode.c)
+ADD_EXECUTABLE(application application.c)
+ADD_EXECUTABLE(file file.c)
+ADD_EXECUTABLE(struct struct.c)
+
+TARGET_LINK_LIBRARIES(nmap pthread)
+TARGET_LINK_LIBRARIES(thread pthread)
