@@ -16,6 +16,7 @@ ADD_EXECUTABLE(clock clock.c)
 ADD_EXECUTABLE(chcount chcount.c)
 ADD_EXECUTABLE(floppy floppy.c)
 ADD_EXECUTABLE(swap swap.c)
+ADD_EXECUTABLE(malloc malloc.c)
 
 TARGET_LINK_LIBRARIES(nmap pthread)
 TARGET_LINK_LIBRARIES(thread pthread)
